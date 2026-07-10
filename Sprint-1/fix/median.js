@@ -6,14 +6,14 @@
 // or 'list' has mixed values (the function is expected to sort only numbers).
 
 function calculateMedian(list) {
+  if (!Array.isArray(list)) {
+    return null;
+  }
   const sortedArr = list
-    .filter((item) => item != Number)
+    .filter((item) => typeof item === "number")
     .toSorted((a, b) => a - b);
   const middleIndex = Math.floor(sortedArr.length / 2);
-  const evenMedian =
-    (Math.floor(sortedArr[middleIndex - 1]) +
-      Math.floor(sortedArr[middleIndex])) /
-    2;
+  const evenMedian = (sortedArr[middleIndex - 1] + sortedArr[middleIndex]) / 2;
 
   if (sortedArr.length % 2 == 0) {
     return evenMedian;
