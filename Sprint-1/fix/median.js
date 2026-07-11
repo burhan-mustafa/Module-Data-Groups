@@ -9,9 +9,15 @@ function calculateMedian(list) {
   if (!Array.isArray(list)) {
     return null;
   }
+
   const sortedArr = list
     .filter((item) => typeof item === "number")
     .toSorted((a, b) => a - b);
+
+  if (sortedArr.length < 2) {
+    return null;
+  }
+
   const middleIndex = Math.floor(sortedArr.length / 2);
   const evenMedian = (sortedArr[middleIndex - 1] + sortedArr[middleIndex]) / 2;
 
@@ -21,7 +27,5 @@ function calculateMedian(list) {
   const oddMedian = sortedArr.splice(middleIndex, 1)[0];
   return oddMedian;
 }
-
-console.log(calculateMedian([1, 3, 4]));
 
 module.exports = calculateMedian;
