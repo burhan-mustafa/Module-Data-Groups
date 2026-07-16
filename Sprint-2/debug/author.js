@@ -1,5 +1,7 @@
 // Predict and explain first...
 
+// this would cause an error as objects are not directly iterable they need to be converted into arrays first.
+
 // This program attempts to log out all the property values in the object.
 // But it isn't working. Explain why first and then fix the problem
 
@@ -11,6 +13,6 @@ const author = {
   alive: true,
 };
 
-for (const value of author) {
+for (const [key, value] of Object.entries(author)) {
   console.log(value);
 }
